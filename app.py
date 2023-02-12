@@ -75,6 +75,7 @@ import streamlit as st
 def positive():
     st.markdown("<h2 style='text-align:center; color:green'>Sentence is Positive</h2>", unsafe_allow_html=True)
     st.markdown("<h2 style='font-size:80px; text-align:center'>😊</h2>", unsafe_allow_html=True)
+    st.balloons()
     
 def negative():
     st.markdown("<h3 style='text-align:center; color:red'>Sentence is Negative</h3>", unsafe_allow_html=True)
@@ -83,6 +84,7 @@ def negative():
 def neutral():
     st.markdown("<h3 style='text-align:center; color:blue'>Sentence is Neutral</h3>", unsafe_allow_html=True)
     st.markdown("<h2 style='font-size:80px; text-align:center'>😐</h2>", unsafe_allow_html=True)
+    st.snow()
 
 
 def run_streamlit_app():
