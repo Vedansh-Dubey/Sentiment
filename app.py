@@ -85,39 +85,42 @@ def neutral():
     st.markdown("<h2 style='font-size:80px; text-align:center'>😐</h2>", unsafe_allow_html=True)
 
 
-st.set_page_config(page_icon=":smile:",
-                   layout="wide")
-st.markdown("<h1 style='text-align:center;'>Sentiment Analysis</h1>", unsafe_allow_html=True)
-text_input = st.text_input("Enter Text (In Punjabi, Gujarati or Marathi)")
-text_input = clear_text(text_input)
-if text_input:
-    language = detect(text_input)
-    if language == 'mr':
-        st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Marathi</h2>", unsafe_allow_html=True)
-        sentiment = mr_gu_sentiment(text_input, models_marathi, vectorizer_marathi)
-        sentiment = sentiment[0]
-        if sentiment == 0:
-            neutral()
-        elif sentiment == 1:
-            positive()
+def run_streamlit_app():
+    st.set_page_config(page_icon=":smile:",
+                       layout="wide")
+    st.markdown("<h1 style='text-align:center;'>Sentiment Analysis</h1>", unsafe_allow_html=True)
+    text_input = st.text_input("Enter Text (In Punjabi, Gujarati or Marathi)")
+    text_input = clear_text(text_input)
+    if text_input:
+        language = detect(text_input)
+        if language == 'mr':
+            st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Marathi</h2>", unsafe_allow_html=True)
+            sentiment = mr_gu_sentiment(text_input, models_marathi, vectorizer_marathi)
+            sentiment = sentiment[0]
+            if sentiment == 0:
+                neutral()
+            elif sentiment == 1:
+                positive()
+            else:
+                negative()
+        elif language == 'pa':
+            st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Punjabi</h2>", unsafe_allow_html=True)
+            score = punjabi_sentiment_score(text_input, punjabi_lexicon)
+            if score > 0.15:
+                positive()
+            elif score < -0.15:
+                negative()
+            else:
+                neutral()
+
+        elif language == 'gu':
+            st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Gujarati</h2>", unsafe_allow_html=True)
+            sentiment = mr_gu_sentiment(text_input, models_gujarati, vectorizer_gujarati)
+            if sentiment == 0:
+                negative()
+            else:
+                positive()
         else:
-            negative()
-    elif language == 'pa':
-        st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Punjabi</h2>", unsafe_allow_html=True)
-        score = punjabi_sentiment_score(text_input, punjabi_lexicon)
-        if score > 0.15:
-            positive()
-        elif score < -0.15:
-            negative()
-        else:
-            neutral()
-            
-    elif language == 'gu':
-        st.markdown("<h2 style='text-align:center; font-size:15px'>The language is Gujarati</h2>", unsafe_allow_html=True)
-        sentiment = mr_gu_sentiment(text_input, models_gujarati, vectorizer_gujarati)
-        if sentiment == 0:
-            negative()
-        else:
-            positive()
-    else:
-        st.warning("The language is not Marathi, Punjabi or Gujarati.")
+            st.warning("The language is not Marathi, Punjabi or Gujarati.")
+
+run_streamlit_app()
