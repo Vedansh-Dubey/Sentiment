@@ -43,6 +43,7 @@ pip install -r requirements.txt
 - Install the required libraries using the command `pip install -r requirements.txt`
 - Load a pre-trained model of your choice.
 - Use the model to perform sentiment analysis on new data by passing it a string of text.
+- Run `streamlit run app.py` to run the sample interactive UI application
 
 ## Training your own Models
 
