@@ -88,8 +88,8 @@ def neutral():
 
 
 def run_streamlit_app():
-    st.set_page_config(page_icon=":smile:",
-                       layout="wide")
+    st.set_page_config(page_title="Sentiment Analysis", page_icon="🧊", initial_sidebar_state="auto")
+
     st.markdown("<h1 style='text-align:center;'>Sentiment Analysis</h1>", unsafe_allow_html=True)
     text_input = st.text_input("Enter Text (In Punjabi, Gujarati or Marathi)")
     text_input = clear_text(text_input)
