@@ -61,14 +61,15 @@ This repository is open to contributions. If you have any suggestions for improv
 ## Citing this project:
 
 If you use this project in your research or wish to refer to the results, please use the following citation:
-''' 
+
+```bash
 @misc{Sentiment Analysis,
   author = {Vedansh-Dubey},
   title = {Indic language sentiment analysis},
   year = {2023},
   howpublished = {\url{https://github.com/Vedansh-Dubey/Sentiment}}
 }
-'''
+```
 
 ## License
 
