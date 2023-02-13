@@ -40,6 +40,11 @@ pip install -r requirements.txt
 ## Usage
 
 - Clone the repository to your local machine.
+```bash
+
+git clone https://github.com/Vedansh-Dubey/Sentiment
+
+```
 - Install the required libraries using the command `pip install -r requirements.txt`
 - Load a pre-trained model of your choice.
 - Use the model to perform sentiment analysis on new data by passing it a string of text.
